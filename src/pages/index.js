@@ -4,44 +4,33 @@ import Layout from "../components/layout";
 import { Container, Row, Col } from "react-bootstrap";
 import cardImage from "../images/womenImage.png";
 import calendar from "../images/calendar.png";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import { useStaticQuery, graphql } from "gatsby";
 
-const IndexPage = () => {
-  const {
-    allPseudoCmsCsv: { nodes },
-  } = useStaticQuery(graphql`
-    query {
-      allPseudoCmsCsv {
-        nodes {
-          buttonText
-          cardDescription
-          cardHeadingInfo
-          cardTitle
-        }
-      }
-    }
-  `);
+const IndexPage = ({ data }) => {
+  const womenImage = getImage(data.file.childrenImageSharp[0]);
+  const { buttonText, cardDescription, cardHeadingInfo, cardTitle } =
+    data.allPseudoCmsCsv.nodes[0];
 
-  const { buttonText, cardDescription, cardHeadingInfo, cardTitle } = nodes[0];
   return (
     <Layout>
       <Container>
         <Row>
-          <Col md={6}>
+          <Col md={4}>
             <BigCard
               cardHeadingInfo={cardHeadingInfo}
-              cardImage={cardImage}
+              cardImage={womenImage}
               cardTitle={cardTitle}
               cardDescription={cardDescription}
               calendarImage={calendar}
               buttonText={buttonText}
             />
           </Col>
-          <Col md={6}>
+          <Col md={4}>
             <BigCard
               cardHeadingInfo={cardHeadingInfo}
-              cardImage={cardImage}
+              cardImage={womenImage}
               cardTitle={cardTitle}
               cardDescription={cardDescription}
               calendarImage={calendar}
@@ -53,6 +42,25 @@ const IndexPage = () => {
     </Layout>
   );
 };
+
+export const query = graphql`
+  query {
+    allPseudoCmsCsv {
+      nodes {
+        buttonText
+        cardDescription
+        cardHeadingInfo
+        cardTitle
+      }
+    }
+
+    file(relativePath: { eq: "womenImage.png" }) {
+      childrenImageSharp {
+        gatsbyImageData(placeholder: BLURRED)
+      }
+    }
+  }
+`;
 
 export default IndexPage;
 

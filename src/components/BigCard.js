@@ -1,5 +1,6 @@
 import React from "react";
 import * as styles from "./big-card.module.scss";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const BigCard = ({
   cardHeadingInfo,
@@ -12,7 +13,7 @@ const BigCard = ({
   return (
     <div className={styles.bigCard}>
       <div className={styles.imageContainer}>
-        <img src={cardImage} alt="sami" />
+        <GatsbyImage image={cardImage} alt="sa" />
       </div>
       <div className={styles.bodyContainer}>
         <p>{cardHeadingInfo}</p>
