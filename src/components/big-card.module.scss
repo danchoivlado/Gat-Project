@@ -1,0 +1,47 @@
+.bigCard {
+  border-radius: 20px;
+  overflow: hidden;
+  font-family: museo-sans, sans-serif;
+
+  button {
+    padding: 16px;
+    background-color: #633bb0;
+    border-radius: 26px;
+    border: none;
+    color: white;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .imageContainer {
+  }
+
+  .bodyContainer {
+    background-color: #ffffff;
+    margin: 20px;
+    p {
+      size: 16px;
+      color: #453080;
+    }
+    .cardTittle {
+      font-size: 23px;
+      color: #633bb0;
+    }
+
+    .calendar {
+      display: flex;
+      align-items: center;
+      img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
