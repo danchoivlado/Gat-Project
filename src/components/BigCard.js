@@ -22,7 +22,7 @@ const BigCard = ({
         <div className={styles.calendar}>
           <img src={calendarImage} alt="sa" />
           <p>
-            Dienstag, 25.10 2022
+            Dienstag, 25.10 2024
             <br />
             18:00-19:30 Uhr
           </p>
